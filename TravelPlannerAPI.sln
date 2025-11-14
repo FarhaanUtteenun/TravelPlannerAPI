@@ -1,0 +1,106 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{A1B2C3D4-E5F6-4A5B-8C9D-1E2F3A4B5C6D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{B2C3D4E5-F6A7-4B5C-9D1E-2F3A4B5C6D7E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateway", "ApiGateway", "{C3D4E5F6-A7B8-4C5D-9E1F-3A4B5C6D7E8F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Frontend", "Frontend", "{D4E5F6A7-B8C9-4D5E-9F1A-4B5C6D7E8F9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{E5F6A7B8-C9D1-4E5F-9A1B-5C6D7E8F9A1B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{F6A7B8C9-D1E2-4F5A-9B1C-6D7E8F9A1B2C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.Gateway", "src\ApiGateway\TravelPlanner.Gateway\TravelPlanner.Gateway.csproj", "{11111111-1111-1111-1111-111111111111}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.TrainService", "src\Services\TravelPlanner.TrainService\TravelPlanner.TrainService.csproj", "{22222222-2222-2222-2222-222222222222}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.BusService", "src\Services\TravelPlanner.BusService\TravelPlanner.BusService.csproj", "{33333333-3333-3333-3333-333333333333}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.FlightService", "src\Services\TravelPlanner.FlightService\TravelPlanner.FlightService.csproj", "{44444444-4444-4444-4444-444444444444}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.BlazorApp", "src\Frontend\TravelPlanner.BlazorApp\TravelPlanner.BlazorApp.csproj", "{55555555-5555-5555-5555-555555555555}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.Shared", "src\Shared\TravelPlanner.Shared\TravelPlanner.Shared.csproj", "{66666666-6666-6666-6666-666666666666}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.TrainService.Tests", "tests\TravelPlanner.TrainService.Tests\TravelPlanner.TrainService.Tests.csproj", "{77777777-7777-7777-7777-777777777777}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.BusService.Tests", "tests\TravelPlanner.BusService.Tests\TravelPlanner.BusService.Tests.csproj", "{88888888-8888-8888-8888-888888888888}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TravelPlanner.FlightService.Tests", "tests\TravelPlanner.FlightService.Tests\TravelPlanner.FlightService.Tests.csproj", "{99999999-9999-9999-9999-999999999999}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{AAAAAAAA-AAAA-AAAA-AAAA-AAAAAAAAAAAA}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{11111111-1111-1111-1111-111111111111}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11111111-1111-1111-1111-111111111111}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11111111-1111-1111-1111-111111111111}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11111111-1111-1111-1111-111111111111}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22222222-2222-2222-2222-222222222222}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22222222-2222-2222-2222-222222222222}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22222222-2222-2222-2222-222222222222}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22222222-2222-2222-2222-222222222222}.Release|Any CPU.Build.0 = Release|Any CPU
+		{33333333-3333-3333-3333-333333333333}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{33333333-3333-3333-3333-333333333333}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{33333333-3333-3333-3333-333333333333}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{33333333-3333-3333-3333-333333333333}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44444444-4444-4444-4444-444444444444}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44444444-4444-4444-4444-444444444444}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44444444-4444-4444-4444-444444444444}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44444444-4444-4444-4444-444444444444}.Release|Any CPU.Build.0 = Release|Any CPU
+		{55555555-5555-5555-5555-555555555555}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{55555555-5555-5555-5555-555555555555}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{55555555-5555-5555-5555-555555555555}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{55555555-5555-5555-5555-555555555555}.Release|Any CPU.Build.0 = Release|Any CPU
+		{66666666-6666-6666-6666-666666666666}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{66666666-6666-6666-6666-666666666666}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{66666666-6666-6666-6666-666666666666}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{66666666-6666-6666-6666-666666666666}.Release|Any CPU.Build.0 = Release|Any CPU
+		{77777777-7777-7777-7777-777777777777}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{77777777-7777-7777-7777-777777777777}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{77777777-7777-7777-7777-777777777777}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{77777777-7777-7777-7777-777777777777}.Release|Any CPU.Build.0 = Release|Any CPU
+		{88888888-8888-8888-8888-888888888888}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{88888888-8888-8888-8888-888888888888}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{88888888-8888-8888-8888-888888888888}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{88888888-8888-8888-8888-888888888888}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99999999-9999-9999-9999-999999999999}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{B2C3D4E5-F6A7-4B5C-9D1E-2F3A4B5C6D7E} = {A1B2C3D4-E5F6-4A5B-8C9D-1E2F3A4B5C6D}
+		{C3D4E5F6-A7B8-4C5D-9E1F-3A4B5C6D7E8F} = {A1B2C3D4-E5F6-4A5B-8C9D-1E2F3A4B5C6D}
+		{D4E5F6A7-B8C9-4D5E-9F1A-4B5C6D7E8F9A} = {A1B2C3D4-E5F6-4A5B-8C9D-1E2F3A4B5C6D}
+		{E5F6A7B8-C9D1-4E5F-9A1B-5C6D7E8F9A1B} = {A1B2C3D4-E5F6-4A5B-8C9D-1E2F3A4B5C6D}
+		{11111111-1111-1111-1111-111111111111} = {C3D4E5F6-A7B8-4C5D-9E1F-3A4B5C6D7E8F}
+		{22222222-2222-2222-2222-222222222222} = {B2C3D4E5-F6A7-4B5C-9D1E-2F3A4B5C6D7E}
+		{33333333-3333-3333-3333-333333333333} = {B2C3D4E5-F6A7-4B5C-9D1E-2F3A4B5C6D7E}
+		{44444444-4444-4444-4444-444444444444} = {B2C3D4E5-F6A7-4B5C-9D1E-2F3A4B5C6D7E}
+		{55555555-5555-5555-5555-555555555555} = {D4E5F6A7-B8C9-4D5E-9F1A-4B5C6D7E8F9A}
+		{66666666-6666-6666-6666-666666666666} = {E5F6A7B8-C9D1-4E5F-9A1B-5C6D7E8F9A1B}
+		{77777777-7777-7777-7777-777777777777} = {F6A7B8C9-D1E2-4F5A-9B1C-6D7E8F9A1B2C}
+		{88888888-8888-8888-8888-888888888888} = {F6A7B8C9-D1E2-4F5A-9B1C-6D7E8F9A1B2C}
+		{99999999-9999-9999-9999-999999999999} = {F6A7B8C9-D1E2-4F5A-9B1C-6D7E8F9A1B2C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {12345678-1234-1234-1234-123456789ABC}
+	EndGlobalSection
+EndGlobal

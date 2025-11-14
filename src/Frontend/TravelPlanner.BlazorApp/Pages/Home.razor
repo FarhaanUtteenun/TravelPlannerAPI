@@ -1,0 +1,183 @@
+@page "/"
+
+<PageTitle>Travel Planner</PageTitle>
+
+<div class="container mt-5">
+    <h1 class="mb-4">🚀 Travel Planner</h1>
+    <p class="lead">Find the best routes across trains, buses, and flights!</p>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h5 class="card-title">Search Routes</h5>
+            <div class="row g-3">
+                <div class="col-md-5">
+                    <label class="form-label">From</label>
+                    <input type="text" class="form-control" @bind="fromLocation" placeholder="Enter departure city" />
+                </div>
+                <div class="col-md-5">
+                    <label class="form-label">To</label>
+                    <input type="text" class="form-control" @bind="toLocation" placeholder="Enter destination city" />
+                </div>
+                <div class="col-md-2 d-flex align-items-end">
+                    <button class="btn btn-primary w-100" @onclick="SearchRoutes">Search</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @if (isLoading)
+    {
+        <div class="text-center">
+            <div class="spinner-border text-primary" role="status">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+            <p class="mt-2">Searching for routes...</p>
+        </div>
+    }
+    else if (errorMessage != null)
+    {
+        <div class="alert alert-danger" role="alert">
+            <strong>Error:</strong> @errorMessage
+        </div>
+    }
+    else if (routes != null && routes.Any())
+    {
+        <div class="row">
+            <div class="col-12">
+                <h3 class="mb-3">Available Routes (@routes.Count())</h3>
+            </div>
+            @foreach (var route in routes)
+            {
+                <div class="col-md-6 col-lg-4 mb-3">
+                    <div class="card h-100">
+                        <div class="card-header bg-primary text-white">
+                            <strong>@GetRouteIcon(route.Provider) @route.Provider</strong>
+                        </div>
+                        <div class="card-body">
+                            <h6 class="card-subtitle mb-2 text-muted">@route.RouteId</h6>
+                            <p class="mb-1"><strong>From:</strong> @route.From</p>
+                            <p class="mb-1"><strong>To:</strong> @route.To</p>
+                            <p class="mb-1"><strong>Duration:</strong> @route.Duration</p>
+                            <p class="mb-1"><strong>Departure:</strong> @route.DepartureTime.ToString("dd MMM yyyy HH:mm")</p>
+                            <p class="mb-1"><strong>Arrival:</strong> @route.ArrivalTime.ToString("dd MMM yyyy HH:mm")</p>
+                            <p class="mb-1"><strong>Available Seats:</strong> @route.AvailableSeats</p>
+                        </div>
+                        <div class="card-footer">
+                            <h4 class="text-success mb-0">@route.Price.ToString("C") @route.Currency</h4>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else if (!isLoading && fromLocation != null && toLocation != null)
+    {
+        <div class="alert alert-info" role="alert">
+            No routes found for your search. Try different locations.
+        </div>
+    }
+</div>
+
+@code {
+    private string? fromLocation;
+    private string? toLocation;
+    private IEnumerable<RouteDto>? routes;
+    private bool isLoading = false;
+    private string? errorMessage;
+
+    private async Task SearchRoutes()
+    {
+        if (string.IsNullOrWhiteSpace(fromLocation) || string.IsNullOrWhiteSpace(toLocation))
+        {
+            errorMessage = "Please enter both departure and destination locations.";
+            return;
+        }
+
+        isLoading = true;
+        errorMessage = null;
+        routes = null;
+
+        try
+        {
+            // In a real implementation, this would call the API Gateway
+            // For now, we'll simulate some mock data
+            await Task.Delay(1000); // Simulate API call
+
+            routes = new List<RouteDto>
+            {
+                new RouteDto
+                {
+                    RouteId = "TR-001",
+                    From = fromLocation,
+                    To = toLocation,
+                    DepartureTime = DateTime.Now.AddDays(1).AddHours(9),
+                    ArrivalTime = DateTime.Now.AddDays(1).AddHours(11).AddMinutes(30),
+                    Duration = "2h 30m",
+                    Price = 120.50m,
+                    Currency = "EUR",
+                    Provider = "Train Service",
+                    AvailableSeats = 45
+                },
+                new RouteDto
+                {
+                    RouteId = "FL-042",
+                    From = fromLocation,
+                    To = toLocation,
+                    DepartureTime = DateTime.Now.AddDays(1).AddHours(10).AddMinutes(15),
+                    ArrivalTime = DateTime.Now.AddDays(1).AddHours(12).AddMinutes(30),
+                    Duration = "1h 15m",
+                    Price = 89.99m,
+                    Currency = "EUR",
+                    Provider = "Flight Service",
+                    AvailableSeats = 120
+                },
+                new RouteDto
+                {
+                    RouteId = "BUS-315",
+                    From = fromLocation,
+                    To = toLocation,
+                    DepartureTime = DateTime.Now.AddDays(1).AddHours(8),
+                    ArrivalTime = DateTime.Now.AddDays(1).AddHours(16).AddMinutes(30),
+                    Duration = "8h 30m",
+                    Price = 35.00m,
+                    Currency = "EUR",
+                    Provider = "Bus Service",
+                    AvailableSeats = 28
+                }
+            };
+        }
+        catch (Exception ex)
+        {
+            errorMessage = $"An error occurred: {ex.Message}";
+        }
+        finally
+        {
+            isLoading = false;
+        }
+    }
+
+    private string GetRouteIcon(string provider)
+    {
+        return provider.ToLower() switch
+        {
+            var p when p.Contains("train") => "🚆",
+            var p when p.Contains("bus") => "🚌",
+            var p when p.Contains("flight") => "✈️",
+            _ => "🚀"
+        };
+    }
+
+    public class RouteDto
+    {
+        public string RouteId { get; set; } = string.Empty;
+        public string From { get; set; } = string.Empty;
+        public string To { get; set; } = string.Empty;
+        public DateTime DepartureTime { get; set; }
+        public DateTime ArrivalTime { get; set; }
+        public string Duration { get; set; } = string.Empty;
+        public decimal Price { get; set; }
+        public string Currency { get; set; } = "USD";
+        public string Provider { get; set; } = string.Empty;
+        public int AvailableSeats { get; set; }
+    }
+}
