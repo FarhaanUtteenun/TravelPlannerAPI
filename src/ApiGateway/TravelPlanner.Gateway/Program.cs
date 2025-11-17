@@ -14,7 +14,7 @@ var jwtSettings = builder.Configuration.GetSection("JwtSettings");
 var secretKey = jwtSettings["SecretKey"] ?? "YourSuperSecretKeyForJWTTokenGeneration123!";
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-    .AddJwtBearer(options =>
+    .AddJwtBearer("Bearer", options =>
     {
         options.TokenValidationParameters = new TokenValidationParameters
         {
@@ -28,6 +28,15 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+builder.Services.AddAuthorization();
+
+// Add Controllers for aggregation
+builder.Services.AddControllers();
+builder.Services.AddEndpointsApiExplorer();
+
+// Add HttpClient for calling downstream services
+builder.Services.AddHttpClient();
+
 // Add Ocelot
 builder.Services.AddOcelot();
 
@@ -35,9 +44,9 @@ builder.Services.AddOcelot();
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("AllowAll",
-        builder =>
+        corsBuilder =>
         {
-            builder.AllowAnyOrigin()
+            corsBuilder.AllowAnyOrigin()
                    .AllowAnyMethod()
                    .AllowAnyHeader();
         });
@@ -58,7 +67,10 @@ app.UseCors("AllowAll");
 app.UseAuthentication();
 app.UseAuthorization();
 
-// Use Ocelot middleware
+// Map controllers BEFORE Ocelot (custom routes take precedence)
+app.MapControllers();
+
+// Use Ocelot middleware for routes not handled by controllers
 await app.UseOcelot();
 
 app.Run();

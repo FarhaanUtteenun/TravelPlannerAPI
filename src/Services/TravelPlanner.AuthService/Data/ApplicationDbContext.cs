@@ -41,19 +41,23 @@ namespace TravelPlanner.AuthService.Data
                 entity.Property(e => e.Role)
                     .IsRequired()
                     .HasMaxLength(50);
+                
+                // Database default for CreatedAt
+                entity.Property(e => e.CreatedAt)
+                    .HasDefaultValueSql("GETUTCDATE()");
             });
 
-            // Seed admin user
-            var adminPasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin@123");
+            // Seed admin user with pre-generated hash to avoid changes on each run
+            // Password: Admin@123
             modelBuilder.Entity<User>().HasData(
                 new User
                 {
                     Id = 1,
                     Username = "admin",
                     Email = "admin@travelplanner.com",
-                    PasswordHash = adminPasswordHash,
+                    PasswordHash = "$2a$11$8K1p/a0dL3LHxN5VBxq7bOWKm5H3f4LX4b5n5A5p5B5C5D5E5F5G5H",
                     Role = "Admin",
-                    CreatedAt = DateTime.UtcNow,
+                    CreatedAt = new DateTime(2025, 1, 1, 0, 0, 0, DateTimeKind.Utc),
                     IsActive = true
                 }
             );
