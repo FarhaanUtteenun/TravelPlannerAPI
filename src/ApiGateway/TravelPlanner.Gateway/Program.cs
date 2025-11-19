@@ -30,13 +30,6 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
 
 builder.Services.AddAuthorization();
 
-// Add Controllers for aggregation
-builder.Services.AddControllers();
-builder.Services.AddEndpointsApiExplorer();
-
-// Add HttpClient for calling downstream services
-builder.Services.AddHttpClient();
-
 // Add Ocelot
 builder.Services.AddOcelot();
 
@@ -64,13 +57,7 @@ app.UseHttpsRedirection();
 
 app.UseCors("AllowAll");
 
-app.UseAuthentication();
-app.UseAuthorization();
-
-// Map controllers BEFORE Ocelot (custom routes take precedence)
-app.MapControllers();
-
-// Use Ocelot middleware for routes not handled by controllers
+// Use Ocelot middleware
 await app.UseOcelot();
 
 app.Run();
